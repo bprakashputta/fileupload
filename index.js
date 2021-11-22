@@ -5,7 +5,7 @@ const {request, response} = require("express");
 
 app.set('view engine', 'ejs');
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));// parse url parameters to request body
+app.use(express.urlencoded({extended: true}));
 
 const filestorage = multer.diskStorage({
     destination: (request, file, callback)=>{
@@ -22,7 +22,7 @@ app.get('/', (request, response)=>{
     return response.render('index');
 })
 
-app.post('/api/upload', upload.single("image"), (request, response)=>{
+app.post('/api/upload', upload.single("resume"), (request, response)=>{
     console.log(request.file);
     response.send("File Upload Success");
 });
